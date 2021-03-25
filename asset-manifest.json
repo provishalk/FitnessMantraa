@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/FitnessMantra/static/css/main.e8aef491.chunk.css",
+    "main.js": "/FitnessMantra/static/js/main.af2dd3a1.chunk.js",
+    "main.js.map": "/FitnessMantra/static/js/main.af2dd3a1.chunk.js.map",
+    "runtime-main.js": "/FitnessMantra/static/js/runtime-main.90ae86ef.js",
+    "runtime-main.js.map": "/FitnessMantra/static/js/runtime-main.90ae86ef.js.map",
+    "static/js/2.4e346c8e.chunk.js": "/FitnessMantra/static/js/2.4e346c8e.chunk.js",
+    "static/js/2.4e346c8e.chunk.js.map": "/FitnessMantra/static/js/2.4e346c8e.chunk.js.map",
+    "static/js/3.d1a7f24d.chunk.js": "/FitnessMantra/static/js/3.d1a7f24d.chunk.js",
+    "static/js/3.d1a7f24d.chunk.js.map": "/FitnessMantra/static/js/3.d1a7f24d.chunk.js.map",
+    "index.html": "/FitnessMantra/index.html",
+    "static/css/main.e8aef491.chunk.css.map": "/FitnessMantra/static/css/main.e8aef491.chunk.css.map",
+    "static/js/2.4e346c8e.chunk.js.LICENSE.txt": "/FitnessMantra/static/js/2.4e346c8e.chunk.js.LICENSE.txt",
+    "static/media/1.e8fff3d9.jpg": "/FitnessMantra/static/media/1.e8fff3d9.jpg",
+    "static/media/3.dbe27c9e.jpg": "/FitnessMantra/static/media/3.dbe27c9e.jpg",
+    "static/media/4.57e2bd7b.jpg": "/FitnessMantra/static/media/4.57e2bd7b.jpg",
+    "static/media/5.e18d23ef.jpg": "/FitnessMantra/static/media/5.e18d23ef.jpg",
+    "static/media/Address.1abd5921.png": "/FitnessMantra/static/media/Address.1abd5921.png",
+    "static/media/home.css": "/FitnessMantra/static/media/Background.5795b158.jpg",
+    "static/media/Coins.1dca1cf2.png": "/FitnessMantra/static/media/Coins.1dca1cf2.png",
+    "static/media/ContactUs.css": "/FitnessMantra/static/media/ContactImg1.5e5f7726.jpg",
+    "static/media/Friends.e22c1957.jpg": "/FitnessMantra/static/media/Friends.e22c1957.jpg",
+    "static/media/OnlineTrainer.2d3a6b76.jpg": "/FitnessMantra/static/media/OnlineTrainer.2d3a6b76.jpg",
+    "static/media/Phone.6e5e6d57.png": "/FitnessMantra/static/media/Phone.6e5e6d57.png",
+    "static/media/dumbble.a7fc5b57.png": "/FitnessMantra/static/media/dumbble.a7fc5b57.png",
+    "static/media/insta.18abf633.png": "/FitnessMantra/static/media/insta.18abf633.png",
+    "static/media/logo.32e36fed.png": "/FitnessMantra/static/media/logo.32e36fed.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.90ae86ef.js",
+    "static/js/2.4e346c8e.chunk.js",
+    "static/css/main.e8aef491.chunk.css",
+    "static/js/main.af2dd3a1.chunk.js"
+  ]
+}
