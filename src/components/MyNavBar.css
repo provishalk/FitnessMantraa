@@ -1,0 +1,19 @@
+.Fitnesslogo{
+    font-family: 'Lobster', cursive;
+    font-size: 20px;
+    padding: 0;
+}
+.navbarlinks{
+    color: rgba(255,255,255,.5);
+}
+.navbarlinks:hover {
+    color: rgba(255,255,255,.75);
+    text-decoration: none;
+}
+.navbarLogin{
+    color: black;
+}
+.navbarLogin:hover {
+    color: black;
+    text-decoration: none;
+}

@@ -1,0 +1,19 @@
+.slider img{
+    height: 93vh;
+}
+.tagline{
+    font-weight: 600;
+    font-size: 40px;
+    font-family: 'Alegreya', serif;
+    color: #8BC3A3;
+}
+.slider .carouselLogo {
+    margin-bottom: 7px;
+    width: 70px;
+    height: 50px;
+    display: inline-block;
+}
+.carouselHead{
+    display: inline-block;
+    color: rgb(230, 228, 228);
+}

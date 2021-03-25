@@ -1,0 +1,25 @@
+
+.divimg{
+    background-image: url(../Imeges/ContactImg1.jpg);
+    background-size: cover;
+}
+.bottomDiv{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: black;
+    
+    
+}
+.insta{
+    width: 40px;
+}
+.facebook{
+    width: 40px;
+}
+.bottomDiv1{
+    
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+}

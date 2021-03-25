@@ -1,0 +1,37 @@
+.cardDiv{
+    text-align: center;
+}
+.cardDivImg{
+    height: 100px;
+}
+.cardHead{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.cardText{
+    text-align: center;
+}
+.cardBody{
+    margin-left: 30px;
+    border: none;
+}
+.card-body{
+    padding: 0;
+}
+.lightGray{
+    color: rgb(99, 97, 97);
+    
+}
+.fontWeight700{
+    font-weight: 700;
+}
+.background-of-div{
+
+    background-image: url("../Imeges/Background.jpg");
+    color: white;
+    text-align: center;
+    background-size: cover;
+    padding: 20px;
+}
+
