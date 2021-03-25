@@ -14,7 +14,7 @@ function App() {
   return (
     <BrowserRouter>
 
-      <Route path="/" exact component={Home}></Route>
+      <Route path="/FitnessMantraa" exact component={Home}></Route>
       <Route path="/about" exact component={About}></Route>
       <Route path="/contact_us" exact component={ContactUs}></Route>
       <Route path="/plans" exact component={Plans}></Route>
