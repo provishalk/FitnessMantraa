@@ -1,100 +1,107 @@
-import React, { useState } from 'react'
-import MyNavBar from './MyNavBar';
-import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-const UserRegistration = () => {
-    const [fullName, setFullName] = useState("")
-    const [userEmail, setUserEmail] = useState("");
-    const [mobileNo, setMobileNo] = useState("");
-    const [userName, setUserName] = useState("")
-    const [userPassWord, setUserPassWord] = useState("")
-    return (
-        <div>
-            <MyNavBar />
-            <div className="container ">
-                <div className="row admin-login">
-                    <div className="col text-center">
-                        <h1>User Registration</h1>
-                        <h2>Sign Up</h2>
-                        <p>It's quick and easy.</p>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-5 justify-content-center mx-auto">
+import React, { useState } from "react";
+import MyNavBar from "./MyNavBar";
+import axios from "axios";
+import alertify from "alertifyjs";
 
-                        <FormGroup row>
-                            <Label for="name" sm={3}>FullName</Label>
-                            <Col sm={9}>
-                                <Input type="text" name="username" id="name" placeholder="Full Name" value={fullName} onChange={(event) => {
-                                    setFullName(event.target.value);
-                                }} />
-                            </Col>
-                        </FormGroup>
-                        <FormGroup row>
-                            <Label for="exampleEmail" sm={3}>Email</Label>
-                            <Col sm={9}>
-                                <Input type="email" name="email" id="exampleEmail" placeholder="Email Address" value={userEmail} onChange={(event) => {
-                                    setUserEmail(event.target.value);
-                                }} />
-                            </Col>
-                        </FormGroup>
-                        <FormGroup row>
-                            <Label for="mobileno" sm={3}>Mobile No</Label>
-                            <Col sm={9}>
-                                <Input type="text" name="mobileno" id="mobileno" placeholder="Mobile No" value={mobileNo} onChange={(event) => {
-                                    setMobileNo(event.target.value);
-                                }} />
-                            </Col>
-                        </FormGroup>
-                        <FormGroup row>
-                            <Label for="username" sm={3}>Username</Label>
-                            <Col sm={9}>
-                                <Input type="text" name="username" id="username" placeholder="New User-ID" value={userName} onChange={(event) => {
-                                    setUserName(event.target.value)
-                                }} />
-                            </Col>
-                        </FormGroup>
-                        <FormGroup row>
-                            <Label for="examplePassword" sm={3}>Password</Label>
-                            <Col sm={9}>
-                                <Input type="password" name="password" id="examplePassword" placeholder="Password" value={userPassWord} onChange={(event) => {
-                                    setUserPassWord(event.target.value);
-                                }} />
-                            </Col>
-                        </FormGroup>
-                        <FormGroup check row>
-                            <Col sm={{ size: 10, offset: 2 }}>
-                                <Button className="mt-3" onClick={
-                                    () => {
-                                        fetch('http://localhost:5050/userRegistration', {
-                                            method: 'POST',
-                                            body: JSON.stringify({
-                                                FullName : fullName,
-                                                UserEmail : userEmail,
-                                                MobileNo : mobileNo,
-                                                UserName :userName,
-                                                UserPassword : userPassWord
-                                            }),
-                                            headers: {
-                                                'Content-type': 'application/json; charset=UTF-8',
-                                            },
-                                        }).then((response) => response.json())
-                                            .then(data => {
+const UserRegistration = ({ history }) => {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-                                            });
-                                            setFullName("");
-                                            setUserEmail("");
-                                            setMobileNo("");
-                                            setUserName("");
-                                            setUserPassWord("");
-                                    }
-                                }>Sign Up</Button>
-                            </Col>
-                        </FormGroup>
-                    </div>
-                </div>
+  // Validation States
+  const [fullNameEmpty, setFullNameEmpty] = useState(false);
+  const [emailEmpty, setEmailEmpty] = useState(false);
+  const [passwordEmpty, setPasswordEmpty] = useState(false);
 
-            </div>
+  const register = () => {
+    // Validation
+    setFullNameEmpty(!fullName);
+    setEmailEmpty(!email);
+    setPasswordEmpty(!password);
+
+    if (fullName && email && password) {
+      axios
+        .post("http://localhost:8080/api/user/register", {
+          fullName,
+          email,
+          password,
+        })
+        .then((response) => {
+          alertify.success(response.data.message);
+          history.push("/login");
+        })
+        .catch((error) => alertify.warning(error.response.data.message));
+    }
+  };
+
+  return (
+    <div>
+      <MyNavBar />
+      <div className="container">
+        <div className="row admin-login">
+          <div className="col text-center">
+            <h1>User Registration</h1>
+            <p>It's quick and easy.</p>
+          </div>
         </div>
-    )
-}
-export default UserRegistration
+        <div className="row">
+          <div className="col-md-3"></div>
+          <div className="col-md-6">
+            <div className="form-group">
+              <label>Full Name</label>
+              <input
+                className="form-control"
+                value={fullName}
+                onChange={(event) => setFullName(event.target.value)}
+              />
+              {fullNameEmpty && (
+                <span className="text-danger">Please enter full name</span>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-3"></div>
+          <div className="col-md-6">
+            <div className="form-group">
+              <label>Email</label>
+              <input
+                type="email"
+                className="form-control"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
+
+              {emailEmpty && (
+                <span className="text-danger">Please enter email</span>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-3"></div>
+          <div className="col-md-6">
+            <div className="form-group">
+              <label>Password</label>
+              <input
+                type="password"
+                className="form-control"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+              />
+              {passwordEmpty && (
+                <span className="text-danger">Please enter password</span>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="d-flex justify-content-center mt-3">
+          <button className="btn btn-dark px-5" onClick={register}>
+            Sign Up
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+export default UserRegistration;
