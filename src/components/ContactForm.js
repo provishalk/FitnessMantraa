@@ -44,6 +44,9 @@ const ContactForm = () => {
                     .then(data => {
                         
                     });
+                    setMessage("");
+                    setName("");
+                    setEmail("");
             }
             }>Send</Button>
         </div> 

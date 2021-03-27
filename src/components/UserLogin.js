@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import MyNavBar from './MyNavBar';
+import { Link } from 'react-router-dom';
 import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 const UserLogin = () => {
     const [fullName, setFullName] = useState("")
@@ -36,26 +37,9 @@ const UserLogin = () => {
                         </FormGroup>
                         <FormGroup check row>
                             <Col sm={{ size: 10, offset: 2 }}>
-                                <Button className="mt-3 ml-4 btn btn-success" onClick={
-                                    () => {
-                                        fetch('http://localhost:5050/userRegistration', {
-                                            method: 'POST',
-                                            body: JSON.stringify({
-                                                FullName : fullName,
-                                                UserEmail : userEmail,
-                                                MobileNo : mobileNo,
-                                                UserName :userName,
-                                                UserPassword : userPassWord
-                                            }),
-                                            headers: {
-                                                'Content-type': 'application/json; charset=UTF-8',
-                                            },
-                                        }).then((response) => response.json())
-                                            .then(data => {
-
-                                            });
-                                    }
-                                }>Login</Button>
+                            <Link className="mx-3 mt-2 navbarlinks " to='/FitnessMantraa'>
+                                <Button className="mt-3 ml-4 btn btn-success">Login</Button>
+                            </Link>
                             </Col>
                         </FormGroup>
                     </div>

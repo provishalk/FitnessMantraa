@@ -81,6 +81,11 @@ const UserRegistration = () => {
                                             .then(data => {
 
                                             });
+                                            setFullName("");
+                                            setUserEmail("");
+                                            setMobileNo("");
+                                            setUserName("");
+                                            setUserPassWord("");
                                     }
                                 }>Sign Up</Button>
                             </Col>
