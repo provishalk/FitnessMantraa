@@ -1,66 +1,89 @@
-import React, { useState } from 'react'
-import MyNavBar from './MyNavBar';
-import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import "./AdminLogin.css"
+import React, { useState } from "react";
+import MyNavBar from "./MyNavBar";
+import "./AdminLogin.css";
+import axios from "axios";
+import alertify from "alertifyjs";
 
+const AdminLogin = ({ history }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-const AdminLogin = () => {
-    const [userName, setUserName] = useState("");
-    const [password, setPassword] = useState("");
-    return (
-        <div>
-            <MyNavBar />
-            <div className="container mt-4">
-                <div className="row admin-login">
-                    <div className="col text-center">
-                        <h1>ADMIN LOGIN</h1>
-                    </div>
-                </div>
-                <div className="row fill-content">
-                    <div className="col-5 justify-content-center mx-auto">
+  // Validation States
+  const [emailEmpty, setEmailEmpty] = useState(false);
+  const [passwordEmpty, setPasswordEmpty] = useState(false);
 
-                        <FormGroup row>
-                            <Label for="username" sm={3}>Username</Label>
-                            <Col sm={9}>
-                                <Input type="text" name="username" id="username" placeholder="Username" value={userName} onChange={(event => {
-                                    setUserName(event.target.value);
-                                })} />
-                            </Col>
-                        </FormGroup>
-                        <FormGroup row>
-                            <Label for="examplePassword" sm={3}>Password</Label>
-                            <Col sm={9}>
-                                <Input type="password" name="password" id="examplePassword" placeholder="Password" value={password} onChange={(event) => {
-                                    setPassword(event.target.value);
-                                }} />
-                            </Col>
-                        </FormGroup>
-                        <FormGroup check row>
-                            <Col sm={{ size: 10, offset: 2 }}>
-                                <Button className="mt-3" onClick={() => {
-                                    fetch('http://localhost:5050/adminLogin', {
-                                        method: 'POST',
-                                        body: JSON.stringify({
-                                            uName: userName,
-                                            upassword: password
-                                        }),
-                                        headers: {
-                                            'Content-type': 'application/json; charset=UTF-8',
-                                        },
-                                    }).then((response) => response.json())
-                                        .then(data => {
+  const login = () => {
+    // Validation
+    setEmailEmpty(!email);
+    setPasswordEmpty(!password);
 
-                                        });
-                                }
-                                }>Login</Button>
-                            </Col>
-                        </FormGroup>
-                    </div>
-                </div>
+    if (email && password) {
+      axios
+        .post("http://localhost:8080/api/admin/login", {
+          email,
+          password,
+        })
+        .then((response) => {
+          //   console.log("res", response.data);
+          localStorage.setItem("admin", JSON.stringify(response.data));
+          history.push("/admin-feedback");
+        })
+        .catch((error) => alertify.warning(error.response.data.message));
+    }
+  };
 
-            </div>
+  return (
+    <div>
+      <MyNavBar />
+      <div className="container mt-4">
+        <div className="row admin-login">
+          <div className="col text-center">
+            <h1>ADMIN LOGIN</h1>
+          </div>
         </div>
-    )
-}
+        <div className="row">
+          <div className="col-md-3"></div>
+          <div className="col-md-6">
+            <div className="form-group">
+              <label>Email</label>
+              <input
+                type="email"
+                className="form-control"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
 
-export default AdminLogin
+              {emailEmpty && (
+                <span className="text-danger">Please enter email</span>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-3"></div>
+          <div className="col-md-6">
+            <div className="form-group">
+              <label>Password</label>
+              <input
+                type="password"
+                className="form-control"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+              />
+              {passwordEmpty && (
+                <span className="text-danger">Please enter password</span>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="d-flex justify-content-center mt-3">
+          <button className="btn btn-dark px-5" onClick={login}>
+            Login
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AdminLogin;
