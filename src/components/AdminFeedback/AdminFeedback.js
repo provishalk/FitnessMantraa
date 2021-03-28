@@ -18,10 +18,7 @@ const AdminFeedback = () => {
     <div>
       <MyNavBar />
       <div className="container">
-        <div className="mt-3">
-          <Link to="admin-users">Go to Users</Link>
-        </div>
-        <h3 className="mt-4">User Feedbacks</h3>
+        <h3 className="mt-4">User Feedbacks ({feedbacks.length})</h3>
 
         {feedbacks.map((feedback) => (
           <div class="card mt-3">

@@ -15,6 +15,7 @@ const MyNavBar = () => {
   };
 
   const isLoggedIn = localStorage.getItem("user");
+  const isAdmin = localStorage.getItem("admin");
 
   return (
     <div>
@@ -25,24 +26,38 @@ const MyNavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <Link className="mx-3 mt-2 navbarlinks " to="/">
-              Home
-            </Link>
-            <Link className="mx-3 mt-2 navbarlinks " to="/about">
-              About Us
-            </Link>
-            <Link className="mx-3 mt-2 navbarlinks " to="/contact_us">
-              Contact Us
-            </Link>
-            <Link className="mx-3 mt-2 navbarlinks " to="/store">
-              Store
-            </Link>
+            {isAdmin ? (
+              <>
+                <Link className="mx-3 mt-2 navbarlinks " to="/admin-feedback">
+                  Feedbacks
+                </Link>
+                <Link className="mx-3 mt-2 navbarlinks " to="/admin-users">
+                  Users
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link className="mx-3 mt-2 navbarlinks " to="/">
+                  Home
+                </Link>
+                <Link className="mx-3 mt-2 navbarlinks " to="/about">
+                  About Us
+                </Link>
+                <Link className="mx-3 mt-2 navbarlinks " to="/contact_us">
+                  Contact Us
+                </Link>
+                <Link className="mx-3 mt-2 navbarlinks " to="/store">
+                  Store
+                </Link>
+              </>
+            )}
+
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                {getNameFromLocalStorage()}
+                {isAdmin ? "Admin" : getNameFromLocalStorage()}
               </DropdownToggle>
               <DropdownMenu right>
-                {isLoggedIn ? (
+                {isLoggedIn || isAdmin ? (
                   <Link className="navbarLogin" to="/">
                     <DropdownItem onClick={() => localStorage.clear()}>
                       Logout

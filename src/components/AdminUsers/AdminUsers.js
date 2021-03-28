@@ -18,11 +18,7 @@ const AdminUsers = () => {
     <div>
       <MyNavBar />
       <div className="container">
-        <div className="mt-3">
-          <Link to="admin-feedback">Go to Feedbacks</Link>
-        </div>
-
-        <h3 className="mt-4">Users</h3>
+        <h3 className="mt-4">Users ({users.length})</h3>
         {users.map((user) => (
           <div class="card mt-3">
             <div class="card-body p-3">
