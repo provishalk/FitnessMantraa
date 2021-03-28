@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MyNavBar from "../MyNavBar";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const AdminFeedback = () => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -17,7 +18,10 @@ const AdminFeedback = () => {
     <div>
       <MyNavBar />
       <div className="container">
-        <h3 className="mt-5">User Feedbacks</h3>
+        <div className="mt-3">
+          <Link to="admin-users">Go to Users</Link>
+        </div>
+        <h3 className="mt-4">User Feedbacks</h3>
 
         {feedbacks.map((feedback) => (
           <div class="card mt-3">
