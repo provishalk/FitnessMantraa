@@ -37,7 +37,7 @@ const MyNavBar = () => {
               </>
             ) : (
               <>
-                <Link className="mx-3 mt-2 navbarlinks " to="/">
+                <Link className="mx-3 mt-2 navbarlinks " to="/FitnessMantraa">
                   Home
                 </Link>
                 <Link className="mx-3 mt-2 navbarlinks " to="/about">
